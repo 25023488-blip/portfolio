@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Portfolio – Ngô Khánh Linh</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#f7f6f2;--white:#fff;
+  --ink:#18181b;--ink2:#52525b;--ink3:#a1a1aa;
+  --accent:#6366f1;--accent2:#06b6d4;
+  --green:#10b981;--orange:#f97316;
+  --card:#fff;--border:#e4e4e7;
+  --r:16px;--r2:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Be Vietnam Pro',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(247,246,242,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.2rem,5vw,4rem)}
+.logo{font-weight:900;font-size:1.05rem;color:var(--ink);text-decoration:none;letter-spacing:-.03em;display:flex;align-items:center;gap:6px}
+.logo-dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--ink2);text-decoration:none;transition:color .18s}
+.nav-links a:hover{color:var(--accent)}
+@media(max-width:600px){.nav-links{display:none}}
+
+#hero{min-height:100vh;display:grid;place-items:center;padding:5rem clamp(1.2rem,7vw,6rem) 4rem;position:relative;overflow:hidden}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.hero-blur1{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,.1),transparent 70%);top:-100px;right:-100px;pointer-events:none}
+.hero-blur2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(6,182,212,.08),transparent 70%);bottom:-80px;left:-80px;pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:820px;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:99px;padding:7px 18px;font-size:.78rem;font-weight:600;color:var(--ink2);margin-bottom:2rem}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:#10b981;animation:blink 1.8s infinite;display:inline-block}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-title{font-size:clamp(2.8rem,7vw,5.5rem);font-weight:900;line-height:1.02;letter-spacing:-.04em;margin-bottom:1.2rem}
+.grad{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(.95rem,2vw,1.1rem);color:var(--ink2);max-width:560px;margin:0 auto 2rem;line-height:1.75}
+.hero-pills{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:2.5rem}
+.pill{background:var(--card);border:1px solid var(--border);border-radius:99px;padding:5px 14px;font-size:.78rem;font-weight:500;color:var(--ink2)}
+.hero-cta{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:.65rem 1.5rem;border-radius:99px;font-size:.86rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;border:1.5px solid transparent;font-family:'Be Vietnam Pro',sans-serif}
+.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn-primary:hover{background:#4f46e5;transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--border)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.hero-scroll{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;font-size:.7rem;font-weight:500;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase}
+.scroll-track{width:1px;height:36px;background:linear-gradient(to bottom,var(--ink3),transparent)}
+
+section{padding:5.5rem clamp(1.2rem,6vw,5rem)}
+.sec-label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:8px;margin-bottom:.8rem}
+.sec-label::before{content:'';width:20px;height:2px;background:var(--accent);border-radius:99px}
+.sec-title{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:.7rem}
+
+#about{background:var(--white)}
+.about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+@media(max-width:760px){.about-wrap{grid-template-columns:1fr}}
+.about-avatar{border-radius:var(--r2);background:linear-gradient(135deg,#e0e7ff,#cffafe);aspect-ratio:1;max-width:300px;display:flex;align-items:center;justify-content:center;font-size:5rem;font-weight:900;color:var(--accent);border:1px solid var(--border)}
+.info-stack{display:flex;flex-direction:column;gap:.8rem;margin-top:1.2rem;max-width:300px}
+.info-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:.9rem 1.1rem;display:flex;align-items:center;gap:12px}
+.info-icon{width:36px;height:36px;border-radius:10px;background:#e0e7ff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.info-lbl{font-size:.72rem;color:var(--ink3);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:2px}
+.info-val{font-size:.9rem;font-weight:600;color:var(--ink)}
+.goal-item{display:flex;align-items:flex-start;gap:10px;font-size:.9rem;color:var(--ink2);line-height:1.55;margin-bottom:.7rem}
+.goal-check{width:20px;height:20px;border-radius:6px;background:#dcfce7;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:.75rem}
+
+#skills{background:var(--bg)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.1rem}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:1.4rem 1.5rem;transition:transform .22s,box-shadow .22s}
+.skill-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(99,102,241,.1)}
+.skill-head{display:flex;align-items:center;gap:10px;margin-bottom:.9rem}
+.skill-ico{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.skill-name{font-weight:700;font-size:.95rem}
+.tag-wrap{display:flex;flex-wrap:wrap;gap:5px}
+.tag{padding:3px 10px;border-radius:6px;font-size:.74rem;font-weight:600}
+.ti{background:#e0e7ff;color:#4338ca}
+.tg{background:#dcfce7;color:#15803d}
+.to{background:#ffedd5;color:#c2410c}
+.tp{background:#fce7f3;color:#be185d}
+.tc{background:#cffafe;color:#0e7490}
+
+/* PROJECTS */
+#projects{background:var(--white)}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.4rem}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .22s,box-shadow .22s}
+.proj-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.1)}
+.proj-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative}
+.thumb1{background:linear-gradient(135deg,#e0e7ff,#c7d2fe)}
+.thumb2{background:linear-gradient(135deg,#cffafe,#a5f3fc)}
+.thumb3{background:linear-gradient(135deg,#fef9c3,#fde68a)}
+.thumb4{background:linear-gradient(135deg,#fce7f3,#fbcfe8)}
+.thumb5{background:linear-gradient(135deg,#dcfce7,#bbf7d0)}
+.thumb6{background:linear-gradient(135deg,#fed7aa,#fde68a)}
+.proj-num-badge{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.88);backdrop-filter:blur(6px);border-radius:8px;padding:3px 10px;font-size:.72rem;font-weight:700;color:var(--ink)}
+.proj-pdf-badge{position:absolute;top:12px;right:12px;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:3px 10px;font-size:.7rem;font-weight:700;color:#c2410c}
+.proj-body{padding:1.2rem 1.4rem;flex:1;display:flex;flex-direction:column}
+.proj-subject{font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:.07em;text-transform:uppercase;margin-bottom:.3rem}
+.proj-title{font-weight:800;font-size:1rem;color:var(--ink);margin-bottom:.5rem;line-height:1.3}
+.proj-desc{font-size:.84rem;color:var(--ink2);line-height:1.65;margin-bottom:1rem;flex:1}
+.proj-footer{border-top:1px solid var(--border);padding-top:.9rem;display:flex;align-items:center;justify-content:flex-end}
+.btn-sm{display:inline-flex;align-items:center;gap:5px;padding:5px 13px;border-radius:99px;font-size:.76rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all .18s;border:none;font-family:'Be Vietnam Pro',sans-serif}
+.btn-view{background:var(--accent);color:#fff}
+.btn-view:hover{background:#4f46e5}
+
+/* MODAL */
+.overlay{display:none;position:fixed;inset:0;z-index:300;background:rgba(24,24,27,.6);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem}
+.overlay.open{display:flex}
+.modal{background:var(--card);border-radius:var(--r2);max-width:860px;width:100%;max-height:94vh;overflow-y:auto;position:relative;border:1px solid var(--border);display:flex;flex-direction:column}
+.modal-close{position:absolute;top:1rem;right:1rem;z-index:10;width:32px;height:32px;border-radius:50%;background:var(--bg);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--ink2);font-family:'Be Vietnam Pro',sans-serif}
+.modal-close:hover{background:var(--border)}
+.modal-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-size:4rem;border-radius:var(--r2) var(--r2) 0 0;flex-shrink:0}
+.modal-body{padding:1.5rem 1.8rem;display:flex;flex-direction:column;gap:1.3rem;flex:1}
+.modal-meta{font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:.1em;text-transform:uppercase}
+.modal-title{font-size:1.35rem;font-weight:800;letter-spacing:-.02em;line-height:1.25}
+.modal-sec-title{font-size:.8rem;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:6px;margin-bottom:.5rem}
+.modal-summary{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.2rem;font-size:.9rem;color:var(--ink2);line-height:1.78}
+.modal-tags{display:flex;flex-wrap:wrap;gap:5px}
+
+/* PDF VIEWER */
+.pdf-viewer-wrap{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;background:#525659}
+.pdf-viewer-wrap iframe{display:block;width:100%;height:520px;border:none}
+.pdf-dl-row{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;background:#fff7ed;border-top:1px solid #fed7aa}
+.pdf-dl-name{font-size:.82rem;font-weight:600;color:#92400e;display:flex;align-items:center;gap:6px}
+.btn-dl{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;background:var(--orange);color:#fff;border-radius:99px;font-size:.76rem;font-weight:600;text-decoration:none;border:none;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;transition:background .15s}
+.btn-dl:hover{background:#ea580c}
+
+/* CONCLUSION */
+#conclusion{background:var(--bg)}
+.concl-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:2.2rem 2.5rem;max-width:740px}
+.concl-text{font-size:.97rem;color:var(--ink2);line-height:1.85}
+
+/* CONTACT */
+#contact{background:var(--ink);color:#f4f4f5}
+#contact .sec-label{color:#818cf8}
+#contact .sec-label::before{background:#818cf8}
+#contact .sec-title{color:#fff}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+@media(max-width:680px){.contact-wrap{grid-template-columns:1fr}}
+.contact-desc{color:#a1a1aa;font-size:.95rem;line-height:1.75;margin-bottom:1.8rem}
+.clink{display:flex;align-items:center;gap:10px;color:#d4d4d8;text-decoration:none;font-size:.88rem;transition:color .18s;margin-bottom:.7rem}
+.clink:hover{color:#818cf8}
+.clink-ico{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center}
+.cform{display:flex;flex-direction:column;gap:.7rem}
+.cform input,.cform textarea{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:.75rem 1rem;color:#f4f4f5;font-size:.88rem;font-family:'Be Vietnam Pro',sans-serif;outline:none;transition:border-color .2s}
+.cform input::placeholder,.cform textarea::placeholder{color:#52525b}
+.cform input:focus,.cform textarea:focus{border-color:#818cf8}
+.cform textarea{resize:vertical;min-height:90px}
+.btn-send{background:var(--accent);color:#fff;border:none;border-radius:99px;padding:.7rem 1.7rem;font-size:.88rem;font-weight:600;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;transition:background .2s;align-self:flex-start}
+.btn-send:hover{background:#4f46e5}
+
+footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:1.2rem clamp(1.2rem,6vw,5rem);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+footer p{font-size:.76rem;color:#52525b}
+
+.fi{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.fi.on{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#hero"><span class="logo-dot"></span>Khánh Linh.</a>
+  <ul class="nav-links">
+    <li><a href="#about">Giới thiệu</a></li>
+    <li><a href="#skills">Kỹ năng</a></li>
+    <li><a href="#projects">Bài tập</a></li>
+    <li><a href="#conclusion">Tổng kết</a></li>
+    <li><a href="#contact">Liên hệ</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-blur1"></div>
+  <div class="hero-blur2"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="badge-dot"></span> Portfolio Kỹ thuật số · 2025</div>
+    <h1 class="hero-title">Ngô <span class="grad">Khánh Linh</span><br/>Digital Portfolio</h1>
+    <p class="hero-sub">Tổng hợp kết quả học tập và thực hành từ môn <strong>Nhập môn Công nghệ số & Ứng dụng Trí tuệ Nhân tạo</strong> — nơi mình ghi lại hành trình khám phá công nghệ.</p>
+    <div class="hero-pills">
+      <span class="pill">🎓 Mạng máy tính & Truyền thông dữ liệu</span>
+      <span class="pill">🪪 MSSV: 25023488</span>
+      <span class="pill">✨ 6 bài tập thực hành</span>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#projects">Xem bài tập của mình ↓</a>
+      <a class="btn btn-ghost" href="#about">Về mình</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-track"></div>cuộn xuống</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-wrap fi">
+    <div>
+      <div class="about-avatar">KL</div>
+      <div class="info-stack">
+        <div class="info-card"><div class="info-icon">👤</div><div><div class="info-lbl">Họ và tên</div><div class="info-val">Ngô Khánh Linh</div></div></div>
+        <div class="info-card"><div class="info-icon">🪪</div><div><div class="info-lbl">MSSV</div><div class="info-val">25023488</div></div></div>
+        <div class="info-card"><div class="info-icon">🌐</div><div><div class="info-lbl">Ngành học</div><div class="info-val">Mạng máy tính & Truyền thông dữ liệu</div></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="sec-label">Giới thiệu</div>
+      <h2 class="sec-title">Xin chào! Mình là Khánh Linh 👋</h2>
+      <p style="color:var(--ink2);line-height:1.8;margin-bottom:1.2rem;font-size:.97rem">Mình là sinh viên năm nhất ngành <strong>Mạng máy tính và Truyền thông dữ liệu</strong>. Portfolio này được xây dựng trong khuôn khổ môn học <em>Nhập môn Công nghệ số & Ứng dụng Trí tuệ Nhân tạo</em> — nơi mình ghi lại từng bước học, từng bài thực hành và những kiến thức đã khám phá.</p>
+      <p style="color:var(--ink2);line-height:1.8;margin-bottom:1.5rem;font-size:.97rem">Mình tin rằng việc tổng hợp và trình bày kiến thức một cách có hệ thống là kỹ năng quan trọng trong thời đại số — và đây chính là bước đầu tiên trên hành trình đó.</p>
+      <div class="goal-item"><div class="goal-check">✓</div>Thể hiện các kỹ năng số đã học một cách rõ ràng</div>
+      <div class="goal-item"><div class="goal-check">✓</div>Lưu trữ sản phẩm cá nhân để dễ dàng truy cập & chia sẻ</div>
+      <div class="goal-item"><div class="goal-check">✓</div>Định hướng phát triển bản thân trong lĩnh vực công nghệ</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="fi">
+    <div class="sec-label">Kỹ năng</div>
+    <h2 class="sec-title">Những gì mình đã học được</h2>
+    <p style="color:var(--ink2);font-size:.98rem;line-height:1.75;max-width:500px;margin-bottom:2.8rem">6 nhóm kỹ năng số được thực hành xuyên suốt môn học.</p>
+  </div>
+  <div class="skills-grid fi">
+    <div class="skill-card"><div class="skill-head"><div class="skill-ico" style="background:#e0e7ff">🗂️</div><div class="skill-name">Quản lý tệp & thư mục</div></div><div class="tag-wrap"><span class="tag ti">Cấu trúc thư mục</span><span class="tag ti">Đặt tên tệp</span><span class="tag ti">Tổ chức dữ liệu</span></div></div>
+    <div class="skill-card"><div class="skill-head"><div class="skill-ico" style="background:#dcfce7">🔍</div><div class="skill-name">Tìm kiếm thông tin</div></div><div class="tag-wrap"><span class="tag tg">Toán tử nâng cao</span><span class="tag tg">Đánh giá nguồn tin</span><span class="tag tg">Google Scholar</span></div></div>
+    <div class="skill-card"><div class="skill-head"><div class="skill-ico" style="background:#fef9c3">✍️</div><div class="skill-name">Viết Prompt AI hiệu quả</div></div><div class="tag-wrap"><span class="tag to">Prompt Engineering</span><span class="tag to">Chain-of-Thought</span><span class="tag to">Role Prompting</span></div></div>
+    <div class="skill-card"><div class="skill-head"><div class="skill-ico" style="background:#fce7f3">🤝</div><div class="skill-name">Hợp tác trực tuyến</div></div><div class="tag-wrap"><span class="tag tp">Trello</span><span class="tag tp">Google Docs</span><span class="tag tp">Google Drive</span></div></div>
+    <div class="skill-card"><div class="skill-head"><div class="skill-ico" style="background:#cffafe">🎨</div><div class="skill-name">Sáng tạo nội dung AI</div></div><div class="tag-wrap"><span class="tag tc">Google Gemini</span><span class="tag tc">Canva AI</span><span class="tag tc">Bing Image Creator</span></div></div>
+    <div class="skill-card"><div class="skill-head"><div class="skill-ico" style="background:#dcfce7">⚖️</div><div class="skill-name">AI có trách nhiệm</div></div><div class="tag-wrap"><span class="tag tg">Đạo đức AI</span><span class="tag tg">Liêm chính học thuật</span><span class="tag tg">Fact-check</span></div></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="fi">
+    <div class="sec-label">Bài tập thực hành</div>
+    <h2 class="sec-title">6 Bài tập của mình</h2>
+    <p style="color:var(--ink2);font-size:.9rem;margin-bottom:2.5rem">Bấm vào từng bài để đọc tóm tắt và xem báo cáo PDF đầy đủ.</p>
+  </div>
+  <div class="proj-grid fi">
+
+    <div class="proj-card" onclick="openModal(0)">
+      <div class="proj-thumb thumb1">
+        <span class="proj-num-badge">Bài 1</span>🗂️
+        <span class="proj-pdf-badge">📄 PDF</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-subject">Mục 1.4 · Máy tính & Thiết bị ngoại vi</div>
+        <h3 class="proj-title">Thao tác cơ bản với tệp tin và thư mục</h3>
+        <p class="proj-desc">Xây dựng cấu trúc thư mục tối ưu trên ổ đĩa D, thực hành tạo, đổi tên, sao chép, di chuyển và xóa tệp tin — minh họa qua ảnh chụp màn hình thực tế.</p>
+        <div class="proj-footer"><button class="btn-sm btn-view">Xem chi tiết →</button></div>
+      </div>
+    </div>
+
+    <div class="proj-card" onclick="openModal(1)">
+      <div class="proj-thumb thumb2">
+        <span class="proj-num-badge">Bài 2</span>🔍
+        <span class="proj-pdf-badge">📄 PDF</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-subject">Mục 2.4 · Khai thác dữ liệu & Thông tin</div>
+        <h3 class="proj-title">Tìm kiếm và đánh giá thông tin học thuật</h3>
+        <p class="proj-desc">Tổng hợp 10 tài liệu học thuật về kiến trúc mạng máy tính, đánh giá độ tin cậy theo các tiêu chí tác giả, nhà xuất bản và chỉ số trích dẫn.</p>
+        <div class="proj-footer"><button class="btn-sm btn-view">Xem chi tiết →</button></div>
+      </div>
+    </div>
+
+    <div class="proj-card" onclick="openModal(2)">
+      <div class="proj-thumb thumb3">
+        <span class="proj-num-badge">Bài 3</span>✍️
+        <span class="proj-pdf-badge">📄 PDF</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-subject">Mục 3.4 · Tổng quan về Trí tuệ Nhân tạo</div>
+        <h3 class="proj-title">Viết Prompt hiệu quả cho tác vụ học tập</h3>
+        <p class="proj-desc">So sánh 3 cấp độ Prompt (Cơ bản → Cải tiến → Nâng cao) áp dụng vào tóm tắt tài liệu, giải thích khái niệm và tạo bộ câu hỏi ôn tập theo thang Bloom.</p>
+        <div class="proj-footer"><button class="btn-sm btn-view">Xem chi tiết →</button></div>
+      </div>
+    </div>
+
+    <div class="proj-card" onclick="openModal(3)">
+      <div class="proj-thumb thumb4">
+        <span class="proj-num-badge">Bài 4</span>🤝
+        <span class="proj-pdf-badge">📄 PDF</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-subject">Mục 4.4 · Giao tiếp & Hợp tác môi trường số</div>
+        <h3 class="proj-title">Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</h3>
+        <p class="proj-desc">Thực hành quản lý dự án nhóm "Ứng dụng AI trong dự báo thời tiết và y tế" bằng Trello, Google Docs và Google Drive — có nhật ký tiến độ và minh chứng cụ thể.</p>
+        <div class="proj-footer"><button class="btn-sm btn-view">Xem chi tiết →</button></div>
+      </div>
+    </div>
+
+    <div class="proj-card" onclick="openModal(4)">
+      <div class="proj-thumb thumb5">
+        <span class="proj-num-badge">Bài 5</span>🎨
+        <span class="proj-pdf-badge">📄 PDF</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-subject">Mục 5.4 · Sáng tạo nội dung số</div>
+        <h3 class="proj-title">Dùng AI tạo sinh để sáng tạo nội dung</h3>
+        <p class="proj-desc">Xây dựng bài viết phân tích "Tác động của AI đến thế hệ Gen Z" qua quy trình 4 giai đoạn: lên ý tưởng (Gemini), viết nội dung, tạo hình ảnh (Bing) và dàn trang (Canva AI).</p>
+        <div class="proj-footer"><button class="btn-sm btn-view">Xem chi tiết →</button></div>
+      </div>
+    </div>
+
+    <div class="proj-card" onclick="openModal(5)">
+      <div class="proj-thumb thumb6">
+        <span class="proj-num-badge">Bài 6</span>⚖️
+        <span class="proj-pdf-badge">📄 PDF</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-subject">Mục 6.4 · An toàn & Liêm chính học thuật</div>
+        <h3 class="proj-title">Sử dụng AI có trách nhiệm trong học tập</h3>
+        <p class="proj-desc">Phân tích chính sách AI tại VNU và quốc tế, đúc kết bộ nguyên tắc cá nhân 5 bước C.R.E.A.T.E và infographic về ranh giới hành vi ứng xử với AI trong học thuật.</p>
+        <div class="proj-footer"><button class="btn-sm btn-view">Xem chi tiết →</button></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section id="conclusion">
+  <div class="fi">
+    <div class="sec-label">Tổng kết</div>
+    <h2 class="sec-title">Nhìn lại hành trình học tập</h2>
+    <div class="concl-card">
+      <p class="concl-text">Qua quá trình thực hiện dự án Portfolio này, mình đã tổng hợp và hệ thống hóa lại toàn bộ kiến thức, kỹ năng đã học trong môn học. Từ những thao tác cơ bản với tệp tin và thư mục, đến việc tìm kiếm và đánh giá thông tin học thuật, viết Prompt AI hiệu quả theo cấu trúc C.R.E.A.T.E, hợp tác nhóm trực tuyến bằng các công cụ số, sáng tạo nội dung với AI tạo sinh, và cuối cùng là xây dựng ý thức về việc sử dụng AI có trách nhiệm và liêm chính học thuật.<br/><br/>
+      Những kỹ năng này không chỉ là bài tập học thuật mà còn là nền tảng thực tiễn quan trọng cho công việc và học tập trong môi trường số hóa ngày nay. Mình hiểu rằng AI là công cụ hỗ trợ — không phải thay thế — tư duy của con người.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap fi">
+    <div>
+      <div class="sec-label">Liên hệ</div>
+      <h2 class="sec-title">Kết nối với mình</h2>
+      <p class="contact-desc">Nếu bạn muốn biết thêm về các dự án hoặc muốn hợp tác, đừng ngại liên hệ nhé!</p>
+      <a class="clink" href="mailto:25023488@student.edu.vn"><div class="clink-ico">📧</div>25023488@student.edu.vn</a>
+      <a class="clink" href="#"><div class="clink-ico">💼</div>LinkedIn / Ngô Khánh Linh</a>
+      <a class="clink" href="https://github.com/25023488-blip"><div class="clink-ico">🐙</div>GitHub / 25023488-blip</a>
+    </div>
+    <div>
+      <div class="cform">
+        <input type="text" placeholder="Tên của bạn"/>
+        <input type="email" placeholder="Email"/>
+        <textarea placeholder="Lời nhắn..."></textarea>
+        <button class="btn-send">Gửi tin nhắn →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Ngô Khánh Linh · MSSV 25023488</p>
+  <p>Portfolio Kỹ thuật số – Nhập môn Công nghệ số & UTNTAI</p>
+</footer>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="handleOverlay(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-thumb" id="m-thumb"></div>
+    <div class="modal-body">
+      <div>
+        <div class="modal-meta" id="m-meta"></div>
+        <h2 class="modal-title" id="m-title"></h2>
+      </div>
+      <div>
+        <div class="modal-sec-title">📝 Tóm tắt nội dung bài làm</div>
+        <div class="modal-summary" id="m-summary"></div>
+      </div>
+      <div>
+        <div class="modal-sec-title">🏷️ Nội dung trình bày</div>
+        <div class="modal-tags" id="m-tags"></div>
+      </div>
+      <div>
+        <div class="modal-sec-title">📄 Báo cáo PDF đầy đủ</div>
+        <div class="pdf-viewer-wrap">
+          <iframe id="m-pdf" src="" title="Báo cáo PDF"></iframe>
+        </div>
+        <div class="pdf-dl-row">
+          <span class="pdf-dl-name">📄 <span id="m-pdf-name"></span></span>
+          <a class="btn-dl" id="m-dl" href="#" download>⬇ Tải PDF</a>
+        </div>
+      </div>
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+        <button class="btn btn-ghost" style="font-size:.82rem" onclick="closeModal()">✕ Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const projects=[
+  {
+    emoji:'🗂️',thumb:'thumb1',
+    meta:'Bài tập 1 · Mục 1.4',
+    title:'Thao tác cơ bản với tệp tin và thư mục',
+    summary:'Bài thực hành hướng dẫn từng bước thao tác quản lý tệp tin trên Windows. Mình đã tạo thư mục <strong>ThucHanh_NgoKhanhLinh</strong> trên ổ D, tạo tệp văn bản <em>GhiChu.txt</em>, đổi tên thành <em>GhiChuQuanTrong.txt</em>, tạo thư mục con <em>TaiLieu</em>, thực hành Copy/Paste và Cut/Paste để sao chép & di chuyển tệp, sau đó xóa tệp vào Thùng rác và khôi phục lại. Toàn bộ quy trình được minh họa bằng ảnh chụp màn hình thực tế từng bước.',
+    tags:['Cấu trúc thư mục','Đặt tên tệp','Copy & Paste','Cut & Paste','Recycle Bin','Ảnh minh họa'],
+    pdf:'bai1.pdf',pdfName:'Bài tập 1 – Thao tác tệp tin và thư mục.pdf'
+  },
+  {
+    emoji:'🔍',thumb:'thumb2',
+    meta:'Bài tập 2 · Mục 2.4',
+    title:'Tìm kiếm và đánh giá thông tin học thuật',
+    summary:'Chủ đề nghiên cứu: <strong>Kiến trúc hệ thống mạng máy tính và các giao thức truyền tải hiện đại</strong>. Mình đã tổng hợp 10 tài liệu học thuật từ Google Scholar, Microsoft Academic và các tạp chí chuyên ngành — bao gồm sách của Peterson & Davie, Kurose & Ross, các bài báo về SDN (OpenFlow, BBR Congestion Control), RFC 793 và báo cáo Cisco. Bài đánh giá sâu 2 nguồn tin chủ chốt theo tiêu chí tác giả, nội dung, tính cập nhật và chỉ số trích dẫn, kèm bảng xếp hạng độ tin cậy 10 tài liệu.',
+    tags:['Google Scholar','Toán tử tìm kiếm','Đánh giá nguồn tin','SDN','TCP/IP','Bảng xếp hạng'],
+    pdf:'bai2.pdf',pdfName:'Bài tập 2 – Tìm kiếm và đánh giá thông tin.pdf'
+  },
+  {
+    emoji:'✍️',thumb:'thumb3',
+    meta:'Bài tập 3 · Mục 3.4',
+    title:'Viết Prompt hiệu quả cho tác vụ học tập',
+    summary:'Mình thực hành với 3 tác vụ đại diện: <strong>(1) Tóm tắt tài liệu học thuật</strong> — so sánh Prompt cơ bản, cải tiến và nâng cao dùng Role Prompting + Chain-of-Thought; <strong>(2) Giải thích khái niệm</strong> "Điện toán đám mây" bằng phép ẩn dụ đời sống; <strong>(3) Tạo bộ câu hỏi ôn tập</strong> phân cấp theo thang Bloom với giải thích đáp án. Kết quả đúc kết thành bộ nguyên tắc <em>C.R.E.A.T.E</em> gồm 6 bước viết Prompt hiệu quả.',
+    tags:['Role Prompting','Chain-of-Thought','Few-shot','Thang Bloom','C.R.E.A.T.E','3 tác vụ so sánh'],
+    pdf:'bai3.pdf',pdfName:'Bài tập 3 – Prompt Engineering.pdf'
+  },
+  {
+    emoji:'🤝',thumb:'thumb4',
+    meta:'Bài tập 4 · Mục 4.4',
+    title:'Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm',
+    summary:'Dự án nhóm về đề tài <strong>"Ứng dụng AI trong dự báo thời tiết và y tế"</strong>. Mình đảm nhiệm vai trò phụ trách nội dung phần 2 (Ứng dụng AI dự báo thời tiết) và sử dụng 4 công cụ: <em>Trello</em> quản lý nhiệm vụ, <em>Google Docs</em> soạn thảo cộng tác theo thời gian thực, <em>Google Drive</em> lưu trữ tài nguyên, và <em>Zalo</em> giao tiếp nhanh. Bài có nhật ký tiến độ 7 ngày và ảnh chụp minh chứng sử dụng từng công cụ.',
+    tags:['Trello','Google Docs','Google Drive','Zalo','Nhật ký 7 ngày','Minh chứng ảnh'],
+    pdf:'bai4.pdf',pdfName:'Bài tập 4 – Hợp tác trực tuyến.pdf'
+  },
+  {
+    emoji:'🎨',thumb:'thumb5',
+    meta:'Bài tập 5 · Mục 5.4',
+    title:'Dùng AI tạo sinh để sáng tạo nội dung',
+    summary:'Chủ đề: <strong>"Tác động của AI đến thế hệ Gen Z — Cơ hội phát triển hay nguy cơ bị thay thế?"</strong>. Quy trình 4 giai đoạn: <em>Giai đoạn 1</em> lên dàn ý với Google Gemini; <em>Giai đoạn 2</em> viết nội dung phản biện chiều sâu; <em>Giai đoạn 3</em> tạo hình ảnh minh họa độc quyền bằng Bing Image Creator với Prompt cyberpunk; <em>Giai đoạn 4</em> dàn trang bằng Canva Magic Design. Bài có bảng so sánh hiệu năng 3 công cụ AI và phần phân tích vấn đề đạo đức liên quan.',
+    tags:['Google Gemini','Bing Image Creator','Canva AI','Prompt hình ảnh','So sánh công cụ','Đạo đức AI'],
+    pdf:'bai5.pdf',pdfName:'Bài tập 5 – Sáng tạo nội dung với AI.pdf'
+  },
+  {
+    emoji:'⚖️',thumb:'thumb6',
+    meta:'Bài tập 6 · Mục 6.4',
+    title:'Sử dụng AI có trách nhiệm trong học tập',
+    summary:'Báo cáo phân tích chính sách AI tại <strong>Đại học Quốc gia Hà Nội (VNU)</strong> và đối chiếu với xu hướng quốc tế (Harvard, Stanford, RMIT) — từ mô hình "cấm đoán tuyệt đối" sang "tích hợp có kiểm soát" theo 3 mức đèn giao thông. Case study thực tế minh họa quy trình dùng AI có trách nhiệm. Kết quả đúc kết <em>Lộ trình 5 bước</em>: Chủ động tư duy → Prompt thông minh → Kiểm chứng dữ liệu → Dấu ấn cá nhân → Minh bạch học thuật. Kèm infographic trực quan.',
+    tags:['Chính sách VNU','3 mức đèn giao thông','Lộ trình 5 bước','Case Study','Infographic','Trích dẫn APA'],
+    pdf:'bai6.pdf',pdfName:'Bài tập 6 – AI có trách nhiệm.pdf'
+  }
+];
+
+let cur=-1;
+function openModal(i){
+  cur=i;
+  const d=projects[i];
+  const t=document.getElementById('m-thumb');
+  t.className='modal-thumb '+d.thumb;
+  t.style.fontSize='4rem';
+  t.textContent=d.emoji;
+  document.getElementById('m-meta').textContent=d.meta;
+  document.getElementById('m-title').textContent=d.title;
+  document.getElementById('m-summary').innerHTML=d.summary;
+  document.getElementById('m-tags').innerHTML=d.tags.map(t=>`<span class="tag ti">${t}</span>`).join('');
+  document.getElementById('m-pdf').src=d.pdf;
+  document.getElementById('m-pdf-name').textContent=d.pdfName;
+  document.getElementById('m-dl').href=d.pdf;
+  document.getElementById('m-dl').download=d.pdfName;
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('m-pdf').src='';
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function handleOverlay(e){if(e.target===document.getElementById('overlay'))closeModal();}
+
+const ob=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')})},{threshold:.1});
+document.querySelectorAll('.fi').forEach(el=>ob.observe(el));
+</script>
+</body>
+</html>
